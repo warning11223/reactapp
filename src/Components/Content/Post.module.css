@@ -5,3 +5,16 @@
     width: 60px;
     border-radius: 10px;
 }
+
+.like, .dislike {
+    cursor: pointer;
+}
+
+.like img {
+    width: 60px;
+}
+
+.dislike img {
+    width: 45px;
+}
+

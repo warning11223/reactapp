@@ -7,10 +7,11 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import News from "./Components/News/News";
 import Friends from "./Components/Friends/Friends";
+import DialogItem from "./Components/Dialogs/DialogItem/DialogItem";
 
 
 
-function App() {
+function App(props) {
     return (
         <BrowserRouter>
         <div className='app-wrapper'>
@@ -18,10 +19,10 @@ function App() {
           <Nav/>
 
           <div className="app-wrapper-content">
-              <Route path='/content' component={Content}/>
-              <Route path='/dialogs' component={Dialogs}/>
-              <Route path='/news' component={News}/>
-              <Route path='/friends' component={Friends}/>
+              <Route path='/content' render={ () => <Content state={props.state.contentPage}/>}/>
+              <Route path='/dialogs' render={ () => <Dialogs state={props.state.messagesPage} />}/>
+              <Route path='/news' render={ () => <News/>}/>
+              <Route path='/friends' render={() => <Friends/>}/>
           </div>
         </div>
         </BrowserRouter>

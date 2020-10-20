@@ -7,35 +7,35 @@ import Message from "./Message/Message";
 
 
 
-let nameMassive = [
-    {id: 1,name: 'Денис'},
-    {id: 2,name: 'Женя'},
-    {id: 3,name: 'Света'},
-    {id: 4,name: 'Дима'},
-    {id: 5,name: 'Таня'},
-]
 
-let messageMassive = [
-    {id:1, message: 'Hello'},
-    {id:1, message: 'Hi'},
-    {id:1, message: 'Welcome'},
-    {id:1, message: 'How are you?'}
-]
 
-let dialogElements = nameMassive.map( dialog =>  <DialogItem name={dialog.name} id={dialog.id}/>)
-let messageElements = messageMassive.map(message => <Message message={message.message}/>)
+
 
 const Dialogs = (props) => {
+    let dialogElements = props.state.nameMassive.map( dialog =>  <DialogItem name={dialog.name} id={dialog.id}/>)
+    let messageElements = props.state.messageMassive.map(message => <Message message={message.message}/>)
+
+    let newPostElement = React.createRef();
+
+    let addPost = () => {
+        let post = newPostElement.current.value;
+        alert(post)
+    }
+
     return (
 
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                <DialogItem />
+                <DialogItem messageMassive={props.messageMassive} nameMassive={props.nameMassive}/>
                 <Message/>
                 {dialogElements}
             </div>
     <div className={classes.messages}>
         {messageElements}
+        <textarea ref={newPostElement}></textarea>
+        <div>
+        <button onClick={addPost}>Add post</button>
+        </div>
         </div>
         </div>
     )

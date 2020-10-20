@@ -4,11 +4,12 @@ import MyPosts from "./MyPosts";
 import ProfileInfo from "./Profile";
 
 
-const Content = () => {
+const Content = (props) => {
+
     return (
             <div>
                 <ProfileInfo/>
-           <MyPosts/>
+                <MyPosts postsMassive={props.state.postsMassive} />
             </div>
 
     )
